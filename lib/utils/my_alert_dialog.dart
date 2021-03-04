@@ -101,9 +101,7 @@ class MyAlertDialog<T> extends StatelessWidget {
 
     if (title != null) {
       children.add(new Padding(
-        padding: titlePadding ??
-            new EdgeInsets.fromLTRB(
-                24.0, 24.0, 24.0, isDividerEnabled ? 20.0 : 0.0),
+        padding: titlePadding ?? new EdgeInsets.fromLTRB(24.0, 24.0, 24.0, isDividerEnabled ? 20.0 : 0.0),
         child: new DefaultTextStyle(
           style: Theme.of(context).textTheme.title,
           child: new Semantics(child: title, namesRoute: true),
@@ -117,8 +115,7 @@ class MyAlertDialog<T> extends StatelessWidget {
           break;
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
-          label = semanticLabel ??
-              MaterialLocalizations.of(context)?.alertDialogLabel;
+          label = semanticLabel ?? MaterialLocalizations.of(context)?.alertDialogLabel;
       }
     }
 
@@ -136,10 +133,8 @@ class MyAlertDialog<T> extends StatelessWidget {
 
     if (actions != null) {
       if (isDividerEnabled) children.add(divider);
-      children.add(new ButtonTheme.bar(
-        child: new ButtonBar(
-          children: actions,
-        ),
+      children.add(new ButtonBar(
+        children: actions,
       ));
     }
 
@@ -149,9 +144,7 @@ class MyAlertDialog<T> extends StatelessWidget {
       children: children,
     );
 
-    if (label != null)
-      dialogChild =
-          new Semantics(namesRoute: true, label: label, child: dialogChild);
+    if (label != null) dialogChild = new Semantics(namesRoute: true, label: label, child: dialogChild);
 
     return new Dialog(child: dialogChild);
   }
